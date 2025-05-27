@@ -1,0 +1,49 @@
+
+-- :::: TIMESTAMP WITHOUT TIME ZONE, TIMESTAMP WITH TIME ZONE ::::
+CREATE TABLE timeZ (ts TIMESTAMP WITHOUT TIME ZONE, tsz TIMESTAMP WITH TIME ZONE);
+SELECT * FROM timeZ;
+INSERT INTO timeZ VALUES('2025-05-27 02:19:00', '2025-05-27 02:19:00');
+
+
+
+
+--:::: NOW(), the :: operator  ::::
+-- NOW() returns the current date and time.
+SELECT NOW();
+-- In PostgreSQL, the :: operator is a shorthand for type casting—it converts one data type to another. '2025-05-27' is a string. '2025-05-27'::DATE casts the string into a DATE type.
+SELECT NOW()::DATE;
+SELECT NOW()::TIME;
+
+SELECT 'n'::BOOLEAN;
+SELECT 'y'::BOOLEAN;
+
+
+
+
+-- :::: TO_CHAR(date_value, 'format_string') ::::
+-- The TO_CHAR() function in SQL is used to convert a date/time or number into a string using a specified format.
+
+-- TO_CHAR(date_value, 'DDD') formats the date as the day of the year (from 001 to 366)
+SELECT TO_CHAR(NOW(), 'DDD');
+-- Output'147' indicates May 27 is the 147th day of the year 2025.
+
+SELECT TO_CHAR(NOW(), 'DD-MM-YYYY');
+
+
+
+
+-- :::: CURRENT_DATE, INTERVAL, AGE(), EXTRACT() ::::
+SELECT CURRENT_DATE;
+SELECT CURRENT_DATE - INTERVAL '1 year 2 month';
+SELECT CURRENT_DATE - INTERVAL '1 year';
+SELECT CURRENT_DATE - INTERVAL '1 year 6 month';
+
+SELECT AGE(CURRENT_DATE, '1990-01-15');
+
+SELECT *, AGE(CURRENT_DATE, dob) FROM students;
+
+
+SELECT EXTRACT(MONTH FROM '2025-05-27'::DATE);
+-- '2025-05-27' is a string. '2025-05-27'::DATE casts the string into a DATE type.
+-- EXTRACT(MONTH FROM ...) pulls the month part from that date.
+

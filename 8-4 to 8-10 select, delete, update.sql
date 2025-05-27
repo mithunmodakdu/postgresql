@@ -145,3 +145,8 @@ DELETE FROM students
     WHERE grade ='C' AND country = 'USA';
 
 
+SELECT * FROM students;
+
+UPDATE students
+    SET email = 'updated@mail.com', age = 30, course = 'updatedcoursename'
+    WHERE student_id = 5;
